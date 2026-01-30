@@ -41,7 +41,18 @@ These are combined in **Fusion Logic** to produce:
 
 - `score` — estimated arithmetic intensity  
 - `confidence` — stability of prediction  
-- `predicted_runlen` — expected duration of the phase  
+- `predicted_runlen` — expected duration of the phase
+  
+The workload score is computed as a weighted combination of multiple telemetry signals:
+
+score = W_la·LA + W_snoop·S + W_win·Win + W_ema·EMA + W_trend·Trend + Burst_bonus
+
+where:
+- LA = lookahead arithmetic density  
+- S = in-flight snoop signal  
+- Win = sliding window arithmetic ratio  
+- EMA = smoothed long-term trend  
+- Trend = phase growth indicator  
 
 ---
 
